@@ -14,3 +14,14 @@ else
 fi
 
 }
+
+echo "Daily Employee Wage"
+
+EmpRatePerHr=20
+EmpHrs=8
+
+
+
+salary=$(($EmpHrs*$EmpRatePerHr));
+
+echo "$salary"
