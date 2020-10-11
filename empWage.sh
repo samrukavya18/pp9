@@ -24,9 +24,9 @@ NUM_WORKING_DAYS=20
 
 totalEmpHr=0
 totalWorkingDays=0
-if [[ $totalEmpHr -lt $MAX_HRS_IN_MONTH &&
+while [[ $totalEmpHr -lt $MAX_HRS_IN_MONTH &&
         $totalWorkingDays -lt $NUM_WORKING_DAYS ]]
-then
+do
         ((totalWorkingDays++))
         empCheck=$((RANDOM%3))
         case $empCheck in
@@ -42,7 +42,7 @@ then
         esac
 
 totalEmpHr=$(($totalEmpHr+$empHrs))
-fi
+done
 
 totalSalary=$(($totalEmpHr*$EMP_RATE_PER_HR));
 echo "Total Salary : $totalSalary"
