@@ -25,3 +25,17 @@ EmpHrs=8
 salary=$(($EmpHrs*$EmpRatePerHr));
 
 echo "$salary"
+
+function parttime() {
+echo "part  time  employee wage "
+EmpRatePerHr=20
+EmpHrs=4
+
+
+
+sal=$(($EmpHrs*$EmpRatePerHr));
+
+echo "$sal"
+}
+parttime
+
