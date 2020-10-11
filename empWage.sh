@@ -14,28 +14,30 @@ else
 fi
 
 }
-
-echo "Daily Employee Wage"
-
-EmpRatePerHr=20
-EmpHrs=8
+attendance
 
 
+isPartTime=1
+isFullTime=2
+totalSalary=0
+empRatePerHr=20
 
-salary=$(($EmpHrs*$EmpRatePerHr));
+        empCheck=$((RANDOM%3))
+                case $empCheck in
+                        $isFullTime)
+                                empHrs=8
+                                echo "Full-time Wage"
+                                ;;
+                        $isPartTime)
+                                empHrs=4
+                                echo "Part-time Wage"
+                                ;;
+                        *)
+                               empHrs=0
+                                ;;
+                esac
+                salary=$(($empHrs*$empRatePerHr))
+                totalSalary=$(($totalSalary+$salary))
+                echo "Total Salary : $totalSalary"
 
-echo "$salary"
-
-function parttime() {
-echo "part  time  employee wage "
-EmpRatePerHr=20
-EmpHrs=4
-
-
-
-sal=$(($EmpHrs*$EmpRatePerHr));
-
-echo "$sal"
-}
-parttime
 
