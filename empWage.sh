@@ -47,7 +47,7 @@ do
 
 echo "Daily wage -"${employeeDailyWage[@]}
 echo "Total Wage -"${totalWorkingHours[@]}
-
+echo "Day -"${totalWorkingDays[@]}
 
 done
 
