@@ -16,30 +16,33 @@ fi
 }
 attendance
 
-isPartTime=1;
-isFullTime=2;
-totalSalary=0;
-empRatePerHr=20;
-numWorkingDays=20;
+IS_PART_TIME=1
+IS_FULL_TIME=2
+MAX_HRS_IN_MONTH=100
+EMP_RATE_PER_HR=20
+NUM_WORKING_DAYS=20
 
-for (( day=1; day<=$numWorkingDays; day++ ))
-do
-        empCheck=$((RANDOM%3));
-                case $empCheck in
-                        $isFullTime)
-                                empHrs=8
-                                echo "Full-time Wage"
-                                ;;
-                        $isPartTime)
-                                empHrs=4
-                                echo "Part-time Wage"
-                                ;;
-                        *)
-                               empHrs=0
-                                ;;
-                esac
-                salary=$(($empHrs*$empRatePerHr));
-                totalSalary=$(($totalSalary+$salary));
-                echo "Total Salary : $totalSalary"
+totalEmpHr=0
+totalWorkingDays=0
+if [[ $totalEmpHr -lt $MAX_HRS_IN_MONTH &&
+        $totalWorkingDays -lt $NUM_WORKING_DAYS ]]
+then
+        ((totalWorkingDays++))
+        empCheck=$((RANDOM%3))
+        case $empCheck in
+                $IS_FULL_TIME)
+                        empHrs=8
+                        ;;
+                $IS_PART_TIME)
+                        empHrs=4
+                        ;;
+                *)
+                        empHrs=0
+                        ;;
+        esac
 
-done
+totalEmpHr=$(($totalEmpHr+$empHrs))
+fi
+
+totalSalary=$(($totalEmpHr*$EMP_RATE_PER_HR));
+echo "Total Salary : $totalSalary"
